@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalog</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Catalog</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="item1.jpg" class="card-img-top" alt="Item 1">
+          <div class="card-body">
+            <h5 class="card-title">Item 1</h5>
+            <p class="card-text">Price: $10</p>
+            <button class="btn btn-primary add-to-cart" data-item="Item 1" data-price="10">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="item2.jpg" class="card-img-top" alt="Item 2">
+          <div class="card-body">
+            <h5 class="card-title">Item 2</h5>
+            <p class="card-text">Price: $15</p>
+            <button class="btn btn-primary add-to-cart" data-item="Item 2" data-price="15">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <!-- Add more items here -->
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    // Add to cart button event listeners
+    var addToCartButtons = document.getElementsByClassName('add-to-cart');
+    for (var i = 0; i < addToCartButtons.length; i++) {
+      addToCartButtons[i].addEventListener('click', function() {
+        var itemName = this.getAttribute('data-item');
+        var itemPrice = this.getAttribute('data-price');
+        addToCart(itemName, itemPrice);
+      });
+    }
+
+    // Function to add item to the cart
+    function addToCart(itemName, itemPrice) {
+      var cartItems = document.getElementById('cart-items');
+      var newRow = document.createElement('tr');
+      newRow.innerHTML = '<td>' + itemName + '</td><td>' + itemPrice + '</td>';
+      cartItems.appendChild(newRow);
+    }
+  </script>
+</body>
+</html>
